@@ -60,19 +60,38 @@ Note: When you're done, submit a PR.
 
 12. What are the two ways to interpolate Ruby in an ERB view template? What's the difference between these two ways?
 
+```ruby
+<% >
+<%= >
+```
+
+- <% > allows us to run Ruby code without rendering the return value.  Useful for if/each statements.
+- <%= > renders the return value of the Ruby code. Useful for inserting text into the HTML from Ruby.
+
 13. What's an ORM? What does it do?
+- ORM stands for object relational mapping.  It is used as a way to interact with your databases without writing raw SQL.  It is useful because the SQL it generates will take into account the type of database system you are using (ie, sqlite vs postgresql) and still work.
 
 14. What's the most commonly used ORM in ruby (Sinatra & Rails)?
+- Active Record
 
 15. Let's say we have an application with restaurants. There are seven verb + path combinations necessary to provide full CRUD functionality for our restaurant application. List each of the seven combinations, and explain what each is for.
+- CREATE - PUT - create new restaurants
+- READ - GET - retrieve information
+- UPDATE - PUT/PATCH - revise information
+- DESTROY - DELETE - delete information
+- Not sure what the other two verbs are
 
 16. What's a migration?
+- A migration is a set of instructions for setting up / modifying a database. It includes the columns and data types of each attribute.
 
 17. When you create a migration, does it automatically modify your database?
+- No, you must run the migration before it will modify your database.  For Sinatra this has been "rake db:migrate"
 
 18. How does a model relate to a database?
+- A model can tell the database if there are associations between tables and also validations for required fields to insert new rows into a table.
 
 19. What is the difference between `#new` and `#create`?
+- #new does not automatically save, you have to call #save.  Create automatically saves the new row into the database.
 
 20. Given a table named `animals`, What is the SQL query that will return all info from that table?
     `id     name        number_of_legs
@@ -82,12 +101,21 @@ Note: When you're done, submit a PR.
       3     whale       0
       4     bird        2
     `
+```sql
+SELECT * FROM animals
+```
 
 21. Using the same table, What is the SQL query that will return only the animals that has 4 legs?
-
+```sql
+SELECT * FROM animals WHERE number_of_legs = 4
+```
 
 ### Review Questions:  
 22. Given a CSV file (“films.csv”) with these headers [id, title, description], how would you load these into your database to create new instances of Film?  
+
+- convert the 'films.csv' file into a Ruby CSV object with headers,
+- call a .foreach on the object to iterate over each row of the CSV file
+- inside the .foreach, call a Film.create() and assign the correspoding attributes with the headers from the CSV file
 
 23. Given the following hash:
 ```
@@ -100,17 +128,21 @@ activities = {
 ```
 How would I add 'granola bar' to things you should have when hiking?
 
+```ruby
+activities[:hiking][:supplies] << 'granola bar'
+```
+
 24. What are the 4 Principles of OOP? Give a one sentence explanation of each.
 
+* I had to look this one up.
+- Encapsulation - code should be wrapped into classes with specific responsibilities and accessible only where needed
+- Abstraction - expressing intent of methods/variables names so that you can predict behavior without looking at the inner details of the code
+- Inheritance - classes can inherit from others, thus sharing their methods to reduce repitiion of code
+- Polymorphism - means your code can have many forms, such as methods performing different things depending on the argument
 
 ### Self Assessment:
 Choose One: (erase the others)
-* I was able to answer every question without relying on outside resources
 * I was able to answer most questions independently, but utilized outside resources for a few
-* I was able to answer a few questions independently, but relied heavily on outside resources
 
 Choose One:
-* I feel confident about the content presented this week
 * I feel comfortable with the content presented this week
-* I feel overwhelmed by the content presented this week
-* I feel quite lost by the content presented this week
