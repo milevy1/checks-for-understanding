@@ -7,32 +7,56 @@ Note: When you're done, submit a PR.
 ### Week 1 Questions
 
 1. List the five common HTTP verbs and what the purpose is of each verb.
+- POST - create new things usually into a database
+- GET - read or fetch things from database 
+- PUT - update all of an existing thing in database
+- PATCH - update part of an existing thing in database
+- DELETE - delete things from database
 
 2. What is Sinatra?
+- Web framework that can send/receive HTTP responses and convert ruby into HTML
 
 3. What is MVC?
+- Model - data logic/calculations and interacts with databases
+- View - page layouts and templates, generally in HTML
+- Controller - traffic cop to manage HTTP requests and call Models if databse info is needed prior to then handing that information off to the Views to generate the pages
 
 4. Why do we follow conventions when creating our actions/path names in our Sinatra routes?
+- It makes our code more readable and easier to understand for future developers.
 
 5. What types of variables are accessible in our view templates without explicitly passing them?
+- Instance variables
 
 6. Given the following block of code, how would I pass an instance variable `count` with a value of `1` to my `index.erb` template?
 
   ```ruby
   get '/horses' do
+    @count = 1
     erb :index
   end
   ```
 
 7. In the same code block, how would I pass a local variable `name` with a value of `Mr. Ed` to the view?
 
+```ruby
+  get '/horses' do
+    @count = 1
+    @name = 'Mr. Ed'
+    erb :index
+  end
+  ```
+
 8. What's the purpose of ERB?
+- ERB allows using Ruby and HTML together to create dynamic HTML templates that use variable data from databases.
 
 9. Why do I need a development AND test database?
+- Development is where we store our actual data used in the site while the Test database can be used for sample data in tests. By dividing the two, we can write tests with small subsets of data and constantly clear/add data to the tables for testing without polluting our development data.
 
 10. What is CRUD and why is it important?
+- CRUD stands for Create, Read, Update, Destory. These are the 4 primary verbs to describe how we interact with data in our application.  It is important to keep our code base simple for other devs to read and understand.
 
 11. What does HTTP stand for?
+- Hypertext Transfer Protocol
 
 12. What are the two ways to interpolate Ruby in an ERB view template? What's the difference between these two ways?
 
