@@ -134,7 +134,6 @@ activities[:hiking][:supplies] << 'granola bar'
 
 24. What are the 4 Principles of OOP? Give a one sentence explanation of each.
 
-* I had to look this one up.
 - Encapsulation - code should be wrapped into classes with specific responsibilities and accessible only where needed
 - Abstraction - expressing intent of methods/variables names so that you can predict behavior without looking at the inner details of the code
 - Inheritance - classes can inherit from others, thus sharing their methods to reduce repitiion of code
